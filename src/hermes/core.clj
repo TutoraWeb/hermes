@@ -2,7 +2,7 @@
   (:require [cheshire.core :refer [parse-stream]]
             [postal.core :refer [send-message]]
             [stencil.core :refer [render-file]]
-            [clojure.string :refer [split]])
+            [clojure.string :refer [split]]))
 
 (def ^{:dynamic true
        :doc "Settings to use for email delivery (basically SMTP config)"}
