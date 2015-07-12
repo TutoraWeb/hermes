@@ -1,7 +1,9 @@
 (ns hermes.core
   (:require [cheshire.core :refer [parse-stream]]
             [postal.core :refer [send-message]]
-            [clojure.string :refer [split]]))
+            [stencil.core :refer [render-file]]
+            [clojure.string :refer [split]])
+  (:import java.io.File))
 
 (def ^{:dynamic true
        :doc "Settings to use for email delivery (basically SMTP config)"}
@@ -55,7 +57,15 @@
 
 (defn send-email
   [to subject content & attachments]
-  (send-message *delivery-config* (reduce add-attachment
-                                          (build-email *sender-address*
-                                                       to subject content)
-                                          attachments)))
+  (send-message *delivery-config*
+                (reduce add-attachment
+                        (build-email *sender-address*
+                                     to subject content)
+                        attachments)))
+
+(defmacro send-template
+  [to subject template-path data-map & attachment]
+  `(send-email ~to
+               ~subject
+               (render-file ~template-path ~data-map)
+               ~@attachment))
