@@ -3,7 +3,6 @@
             [postal.core :refer [send-message]]
             [stencil.core :refer [render-file]]
             [clojure.string :refer [split]])
-  (:import java.io.File))
 
 (def ^{:dynamic true
        :doc "Settings to use for email delivery (basically SMTP config)"}
