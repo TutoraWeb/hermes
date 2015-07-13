@@ -4,6 +4,7 @@
   :license {:name "MIT"
             :url "http://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [dire "0.5.3"]
                  [cheshire "5.5.0"]
                  [stencil "0.4.0"]
                  [com.draines/postal "1.11.3"]]

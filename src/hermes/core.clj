@@ -22,13 +22,11 @@
 
 (defmacro with-del-config
     [m & body]
-      `(binding [*delivery-config* ~m]
-              ~@body))
+      `(binding [*delivery-config* ~m] ~@body))
 
 (defmacro with-sender
     [m & body]
-      `(binding [*sender-address* ~m]
-              ~@body))
+      `(binding [*sender-address* ~m] ~@body))
 
 (defn parse-del-config
   [json-file-path]
